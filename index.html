@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abbhimanneu SJ · Data Engineer</title>
+  <meta name="description" content="Data engineer in Bangalore. AWS pipelines at work; data projects on my own data, built the same way.">
+  <meta property="og:title" content="Abbhimanneu SJ · Data Engineer">
+  <meta property="og:description" content="AWS data pipelines, data quality, and LLMs that are checked before they are trusted.">
+  <meta property="og:image" content="https://abbhimanneu.github.io/assets/tripforge-pdf.png">
+  <meta name="theme-color" content="#0b0f14">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">abbhimanneu<span>.</span>sj</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li class="hide-sm"><a href="#approach">Approach</a></li>
+      <li class="hide-sm"><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">DATA ENGINEER · BANGALORE</p>
+    <h1>Abbhimanneu SJ<br><span class="dim">I build pipelines people can trust.</span></h1>
+    <p class="lead">
+      At work I build batch and event-driven data pipelines on AWS for Delta Air Lines' In-Flight
+      Entertainment &amp; Connectivity data. Outside work I build data tools for my own life, the
+      same way: safe to re-run, checked before published, tested in CI.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#work">See the work</a>
+      <a class="btn" href="https://github.com/Abbhimanneu">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/abbhimanneu">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.15C0 .52.52 0 1.17 0h13.66C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.17 1.15H1.17C.52 16 0 15.48 0 14.85V1.15zm4.94 12.24V6.17H2.54v7.22h2.4zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01zm2.46 8.21h2.4V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.28 0-1.85.7-2.17 1.2v.03h-.02l.02-.03V6.17h-2.4c.03.68 0 7.22 0 7.22z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+
+    <div class="facts">
+      <div><b>5.5+ yrs</b><span>data engineering</span></div>
+      <div><b>AWS</b><span>Glue · Step Functions · Lambda · CDK</span></div>
+      <div><b>3 companies</b><span>Accenture · Fluence · Delta</span></div>
+      <div><b>Bangalore</b><span>India · hybrid</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head"><h2>Work</h2><span class="num">01</span></div>
+
+      <article class="feature">
+        <div class="body">
+          <span class="tag">FEATURED · PYTHON · LLM · GEODATA</span>
+          <h3>tripforge</h3>
+          <p>Rough trip notes in. A day-by-day itinerary, an interactive map and a costed PDF out.</p>
+
+          <div class="quote"><span class="k">notes.md →</span> "vietnam, 10 days, me + 1, 1.5L each,
+            old quarter street food is a MUST, ha long cruise…"</div>
+
+          <ol class="steps">
+            <li><span><b>Extract.</b> Local LLM turns notes into a schema-checked brief, cached by notes hash.</span></li>
+            <li><span><b>Geocode.</b> OpenStreetMap lookups at 1 req/s, hits and misses cached.</span></li>
+            <li><span><b>Plan.</b> Days per city, neighbours grouped, must-sees guaranteed.</span></li>
+            <li><span><b>Cost &amp; check.</b> Every rupee has a basis; errors stop the run.</span></li>
+            <li><span><b>Render.</b> Dark PDF, Leaflet map, JSON, DuckDB run history.</span></li>
+          </ol>
+
+          <ul class="chips">
+            <li>Python 3.12</li><li>DuckDB</li><li>Ollama</li><li>Pydantic</li>
+            <li>Nominatim</li><li>Folium</li><li>ReportLab</li><li>GitHub Actions</li>
+          </ul>
+
+          <div class="links">
+            <a class="btn primary" href="projects/tripforge.html">Read how it works</a>
+            <a class="btn" href="https://github.com/Abbhimanneu/Data-works/tree/main/tripforge">Code</a>
+            <a class="btn" href="assets/tripforge-vietnam-sample.pdf">Sample PDF</a>
+          </div>
+        </div>
+        <div class="shot">
+          <a href="assets/tripforge-vietnam-sample.pdf">
+            <img src="assets/tripforge-page1.png" alt="Vietnam itinerary PDF, page 1: budget summary, route and cities" loading="lazy">
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="sec-head"><h2>How I build</h2><span class="num">02</span></div>
+      <div class="grid4">
+        <div class="card"><div class="ic">// idempotent</div><h4>Safe to re-run</h4>
+          <p>Deterministic keys, cached steps. Running twice never doubles the data.</p></div>
+        <div class="card"><div class="ic">// contracts</div><h4>Typed at the edges</h4>
+          <p>Inputs and model outputs are validated before anything downstream sees them.</p></div>
+        <div class="card"><div class="ic">// quality gates</div><h4>Checked before shipped</h4>
+          <p>Errors stop the run. Warnings travel with the output, not in a log no one reads.</p></div>
+        <div class="card"><div class="ic">// llm, carefully</div><h4>AI where it's verified</h4>
+          <p>LLMs draft structure and prose; code decides what is true.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><h2>Experience</h2><span class="num">03</span></div>
+      <div class="timeline">
+        <div class="tl now">
+          <div class="when">09/2025 – present</div>
+          <h4>Delta Air Lines · Data Engineer, IFEC</h4>
+          <p>Data pipelines for In-Flight Entertainment &amp; Connectivity analytics on AWS:
+            Glue, Step Functions, Lambda, S3, EventBridge, SNS/SES, Teradata, deployed with CDK
+            and GitLab CI/CD.</p>
+        </div>
+        <div class="tl">
+          <div class="when">2024 – 2025</div>
+          <h4>Fluence</h4>
+        </div>
+        <div class="tl">
+          <div class="when">2020 – 2024</div>
+          <h4>Accenture</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-head"><h2>Toolbox</h2><span class="num">04</span></div>
+      <div class="stack">
+        <div class="card"><h4>Languages</h4>
+          <ul class="chips"><li>Python</li><li>SQL</li><li>PySpark</li><li>Bash</li></ul></div>
+        <div class="card"><h4>AWS</h4>
+          <ul class="chips"><li>Glue</li><li>Step Functions</li><li>Lambda</li><li>S3</li>
+            <li>EventBridge</li><li>SNS / SES</li><li>CDK</li></ul></div>
+        <div class="card"><h4>Data &amp; delivery</h4>
+          <ul class="chips"><li>Teradata</li><li>DuckDB</li><li>GitLab CI/CD</li>
+            <li>GitHub Actions</li><li>Ollama</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h3>Let's talk data.</h3>
+          <p>Pipelines, data quality, or a project idea. LinkedIn is the fastest way to reach me.</p>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://www.linkedin.com/in/abbhimanneu">Message on LinkedIn</a>
+          <a class="btn" href="https://github.com/Abbhimanneu">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Abbhimanneu SJ</span>
+    <span>Hand-written HTML and CSS · hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+</body>
+</html>

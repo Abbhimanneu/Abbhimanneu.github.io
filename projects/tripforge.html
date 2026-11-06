@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tripforge · Abbhimanneu SJ</title>
+  <meta name="description" content="Rough trip notes in; itinerary, map and costed PDF out. How the pipeline works.">
+  <meta property="og:image" content="https://abbhimanneu.github.io/assets/tripforge-pdf.png">
+  <meta name="theme-color" content="#0b0f14">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../">abbhimanneu<span>.</span>sj</a>
+    <ul>
+      <li><a href="../#work">Work</a></li>
+      <li><a href="https://github.com/Abbhimanneu/Data-works/tree/main/tripforge">Code</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<article class="article">
+  <a class="back" href="../#work">← All work</a>
+  <p class="eyebrow" style="margin-top:28px">PROJECT · NOV 2026</p>
+  <h1>tripforge: from rough trip notes to a costed itinerary</h1>
+  <p class="meta">Python · DuckDB · Ollama · OpenStreetMap · ReportLab ·
+    <a href="https://github.com/Abbhimanneu/Data-works/tree/main/tripforge">source</a> ·
+    <a href="../assets/tripforge-vietnam-sample.pdf">sample PDF</a></p>
+
+  <p>Every trip I plan starts as a messy note. tripforge treats that note like any other raw
+    source: extract it into a typed record, enrich it, model it, check it, then publish it as a
+    PDF and a map. One command, and every number shows where it came from.</p>
+
+  <pre><code>$ make demo
+brief: Vietnam, 10 days, 5 cities, 24 places (brief file)
+seed: 24 coordinates
+geocode: 24 found, 0 missing, 0 API calls
+  warn  capacity: did not fit the pace: Hang Mua, Tam Coc, Sung Sot Cave, Ba Na Hills
+  warn  long_leg: day 10: Ben Thanh Market (48.5 km)
+total ≈ ₹216,524 (2 pax)</code></pre>
+
+  <figure>
+    <a href="../assets/tripforge-vietnam-sample.pdf"><img src="../assets/tripforge-pdf.png"
+      alt="Itinerary PDF pages: summary with budget, route chart, day-by-day tables"></a>
+    <figcaption>Pages 1–2 of the Vietnam sample: budget vs estimate, route, day plans.</figcaption>
+  </figure>
+
+  <h2>The pipeline</h2>
+  <table>
+    <tr><th>Stage</th><th>What it does</th><th>Design choice</th></tr>
+    <tr><td>Extract</td><td>Local LLM reads the notes and returns a <code>TripBrief</code>: cities
+      with nights, places with city, type, hours, must-see flag.</td>
+      <td>JSON schema + Pydantic validation; invalid output is rejected and never cached.
+        Cached by notes hash + model.</td></tr>
+    <tr><td>Geocode</td><td>Each place is looked up on OpenStreetMap Nominatim.</td>
+      <td>1 request per second with an identifying User-Agent; hits and misses cached, so a
+        re-run makes zero calls.</td></tr>
+    <tr><td>Plan</td><td>Days per city from nights; arrival days get half the time. Places swept
+      around the city centre so neighbours share a day, balanced to the pace, ordered
+      nearest-neighbour.</td>
+      <td>Pure, deterministic function. Must-see places can push optional ones out; nightlife
+        goes last.</td></tr>
+    <tr><td>Cost</td><td>Stay, food, local transport, transfers, entry fees, flights, buffer.</td>
+      <td>One YAML file per country, local currency, dated FX rate. Each line carries its basis;
+        a missing price is flagged, never invented.</td></tr>
+    <tr><td>Check</td><td>Errors: over 30% of places not found, a must-see dropped. Warnings:
+      overflow, long legs, budget, nights vs days, cost gaps.</td>
+      <td>A quality gate before publishing, like any production table.</td></tr>
+    <tr><td>Render</td><td>Dark PDF, Leaflet map with one layer per day, JSON.</td>
+      <td>Every run also lands in DuckDB: <code>runs</code>, <code>itinerary_stops</code>,
+        <code>cost_lines</code>.</td></tr>
+  </table>
+
+  <h2>Why it's built like a data pipeline</h2>
+  <ul>
+    <li><b>Idempotent.</b> Same input, same output, no repeated LLM or API calls.</li>
+    <li><b>Contracts at the edge.</b> The LLM is a source system with no guarantees; the schema
+      is the contract.</li>
+    <li><b>Lineage on every number.</b> The cost table in the PDF says how each rupee was computed.</li>
+    <li><b>Tested.</b> 20 tests in CI: planner rules, cache behaviour, rate limiting, offline mode,
+      cost totals, check severities, rendering.</li>
+  </ul>
+
+  <h2>Limits</h2>
+  <ul>
+    <li>Distances are straight-line, not road.</li>
+    <li>Cost tiers are averages from 2026 travel-cost guides; real hotel and flight prices vary.</li>
+  </ul>
+
+  <h2>Next</h2>
+  <ul>
+    <li>Road travel times from OSRM</li>
+    <li>Opening hours from OpenStreetMap; skip places closed that weekday</li>
+    <li>Weather by date to swap beach and museum days</li>
+  </ul>
+
+  <p style="margin-top:40px"><a class="btn primary" href="https://github.com/Abbhimanneu/Data-works/tree/main/tripforge">View the code</a></p>
+  <p class="meta" style="margin-top:28px">Map data © OpenStreetMap contributors.</p>
+</article>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Abbhimanneu SJ</span>
+    <span><a href="../">Home</a></span>
+  </div>
+</footer>
+</body>
+</html>
