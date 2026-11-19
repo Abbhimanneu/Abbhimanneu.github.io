@@ -6,9 +6,8 @@
   <title>Abbhimanneu SJ · Data Engineer</title>
   <meta name="description" content="Data engineer in Bangalore. AWS pipelines at work; data projects on my own data, built the same way.">
   <meta property="og:title" content="Abbhimanneu SJ · Data Engineer">
-  <meta property="og:description" content="AWS data pipelines, data quality, and LLMs that are checked before they are trusted.">
-  <meta property="og:image" content="https://abbhimanneu.github.io/assets/tripforge-pdf.png">
-  <meta name="theme-color" content="#0b0f14">
+  <meta property="og:description" content="Data engineer in Bangalore: AWS pipelines at work, small data projects on my own time.">
+    <meta name="theme-color" content="#0b0f14">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -61,40 +60,37 @@
     <div class="wrap">
       <div class="sec-head"><h2>Work</h2><span class="num">01</span></div>
 
-      <article class="feature">
-        <div class="body">
-          <span class="tag">FEATURED · PYTHON · LLM · GEODATA</span>
-          <h3>tripforge</h3>
-          <p>Rough trip notes in. A day-by-day itinerary, an interactive map and a costed PDF out.</p>
-
-          <div class="quote"><span class="k">notes.md →</span> "vietnam, 10 days, me + 1, 1.5L each,
-            old quarter street food is a MUST, ha long cruise…"</div>
-
-          <ol class="steps">
-            <li><span><b>Extract.</b> Local LLM turns notes into a schema-checked brief, cached by notes hash.</span></li>
-            <li><span><b>Geocode.</b> OpenStreetMap lookups at 1 req/s, hits and misses cached.</span></li>
-            <li><span><b>Plan.</b> Days per city, neighbours grouped, must-sees guaranteed.</span></li>
-            <li><span><b>Cost &amp; check.</b> Every rupee has a basis; errors stop the run.</span></li>
-            <li><span><b>Render.</b> Dark PDF, Leaflet map, JSON, DuckDB run history.</span></li>
-          </ol>
-
-          <ul class="chips">
-            <li>Python 3.12</li><li>DuckDB</li><li>Ollama</li><li>Pydantic</li>
-            <li>Nominatim</li><li>Folium</li><li>ReportLab</li><li>GitHub Actions</li>
-          </ul>
-
-          <div class="links">
-            <a class="btn primary" href="projects/tripforge.html">Read how it works</a>
-            <a class="btn" href="https://github.com/Abbhimanneu/Data-works/tree/main/tripforge">Code</a>
-            <a class="btn" href="assets/tripforge-vietnam-sample.pdf">Sample PDF</a>
-          </div>
-        </div>
-        <div class="shot">
-          <a href="assets/tripforge-vietnam-sample.pdf">
-            <img src="assets/tripforge-page1.png" alt="Vietnam itinerary PDF, page 1: budget summary, route and cities" loading="lazy">
-          </a>
-        </div>
-      </article>
+      <div class="grid2">
+        <a class="card proj" href="https://github.com/Abbhimanneu/Data-works/tree/main/tripforge">
+          <div class="ic">// pandas · openpyxl · fpdf2</div>
+          <h4>tripforge</h4>
+          <p>Trip plan and prices in CSV, out comes a PDF itinerary and an Excel cost breakdown in
+            INR, checked against a budget. Hanoi, 2 days: ₹44,154 of ₹50,000.</p>
+          <span class="more">Code →</span>
+        </a>
+        <a class="card proj" href="https://github.com/Abbhimanneu/Data-works/tree/main/ask-my-docs">
+          <div class="ic">// pypdf · numpy · ollama</div>
+          <h4>ask-my-docs</h4>
+          <p>Basic RAG. Converts PDF, HTML, CSV and Markdown to text, chunks and embeds it, and
+            answers questions from the closest chunks with a local LLM.</p>
+          <span class="more">Code →</span>
+        </a>
+        <a class="card proj" href="https://github.com/Abbhimanneu/Data-works/tree/main/outreach-copilot">
+          <div class="ic">// pandas · ollama</div>
+          <h4>outreach-copilot</h4>
+          <p>Drafts LinkedIn connection notes (200 characters max) and follow-up messages for job
+            outreach from a contacts CSV. I review and send them myself.</p>
+          <span class="more">Code →</span>
+        </a>
+        <a class="card proj" href="https://github.com/Abbhimanneu/Data-works/tree/main/databricks-starter">
+          <div class="ic">// pyspark · delta · sql</div>
+          <h4>databricks-starter</h4>
+          <p>Databricks Free Edition notebooks: samples, volumes, bronze / silver / gold, MERGE,
+            time travel, constraints, Auto Loader and a scheduled job bundle.</p>
+          <span class="more">Code →</span>
+        </a>
+      </div>
+      <p style="margin-top:18px"><a class="btn" href="assets/vietnam_2day_itinerary.pdf">Sample: Hanoi 2-day itinerary (PDF)</a></p>
     </div>
   </section>
 
@@ -147,7 +143,7 @@
           <ul class="chips"><li>Glue</li><li>Step Functions</li><li>Lambda</li><li>S3</li>
             <li>EventBridge</li><li>SNS / SES</li><li>CDK</li></ul></div>
         <div class="card"><h4>Data &amp; delivery</h4>
-          <ul class="chips"><li>Teradata</li><li>DuckDB</li><li>GitLab CI/CD</li>
+          <ul class="chips"><li>Teradata</li><li>Databricks</li><li>Delta Lake</li><li>GitLab CI/CD</li>
             <li>GitHub Actions</li><li>Ollama</li></ul></div>
       </div>
     </div>
